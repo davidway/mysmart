@@ -3,7 +3,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.smart4j.chapter1.model.Customer;
 import org.smart4j.chapter1.service.CustomerService;
+import org.smart4j.chapter1.util.DataBaseHelper;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +20,12 @@ public class CustomerServiceTest {
     }
 
     @Before
-    public void init(){
-        //TODO 初始化数据库
+    public void init() throws IOException {
+        DataBaseHelper.executeSqlFile("sql/update.sql");
     }
+
+
+
 
     @Test
     public void getCustomerListTest() throws Exception{
